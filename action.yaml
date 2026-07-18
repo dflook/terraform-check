@@ -38,6 +38,11 @@ inputs:
     default: "0"
 
 outputs:
+  failure_reason:
+    description: |
+      When the job outcome is `failure` because the there are outstanding changes to apply, this will be set to 'changes-to-apply'.
+      If the job fails for any other reason this will not be set.
+      This can be used with the Actions expression syntax to conditionally run a step when there are changes to apply.
   failure-reason:
     description: |
       When the job outcome is `failure` because the there are outstanding changes to apply, this will be set to 'changes-to-apply'.
@@ -46,7 +51,7 @@ outputs:
 
 runs:
   using: docker
-  image: docker://ghcr.io/dflook/terraform-github-actions@sha256:5d8cfe89eb83d6527ad4fe2c48462241d1f17e4d71ca6446806b857cff08f9cf
+  image: docker://ghcr.io/dflook/terraform-github-actions@sha256:6fa30fc1600733c36cd74c7c1974806c8aeadaafb99c4cd4a68a8031ecd44f8c
   entrypoint: /entrypoints/check.sh
 
 branding:
